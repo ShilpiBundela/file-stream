@@ -130,10 +130,8 @@ let _chunkedStream = function(req, res, stat, filePath) {
  *
  */
 let _fullStream = function(req, res, stat, filePath) {
-  res.header({
-    'Content-Length': stat.size,
-    'Content-Type': 'application/octet-stream'
-  });
+  res.setHeader('Content-Length', stat.size);
+  res.setHeader('Content-Type', 'text/octet-stream');
   fileStream = fs.createReadStream(filePath);
   fileStream.on('error', (err) => {
     console.info('------- ERROR Streaming file from filePath: ', filePath);

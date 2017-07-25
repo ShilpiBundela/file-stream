@@ -1,9 +1,9 @@
-# File Stream <i>feathersjs</i>
+# File Stream <i>totaljs</i>
 
 ### Cloning the application
 ----------------------------
 ```
-git@github.com:ShilpiBundela/file-stream.git
+git@github.com:ShilpiBundela/file-stream.git [total-js branch]
 ```
 
 ### Running the application
@@ -24,7 +24,7 @@ yarn install
 ```
 without reloading :
 -----------------
-npm start
+npm run start:debug
 
 with reloading : (dev-server: uses nodemon)
 --------------
@@ -50,7 +50,7 @@ http://<URL_PATH>:3030/ /* (default) URL_PATH : localhost */
 ##### <i>GET</i> : /api/stats/files/:filename
 * gets the resource information for the filename
 
-##### <i>GET</i> : /api/get/file/:filehash/:filename
+##### <i>GET</i> : /api/get/file/:filehash/:filename/
 * gets the actual resource from the server
 * supports sending large sets of data over streams in chunks with ```Range``` request headers
 
@@ -68,5 +68,5 @@ this should get the details of the file and the hash for the next command
 ```
 
 ```
-curl http://<URL_PATH>:3030/api/get/file/<file_hash>/<file_name> --header "Range: bytes=0-"
+curl http://<URL_PATH>:3030/api/get/file/<file_hash>/<file_name>/ --header "Range: bytes=0-"
 ```

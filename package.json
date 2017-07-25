@@ -1,54 +1,29 @@
 {
-  "name": "sonos_feathersjs",
-  "description": "file streaming application built with feathersjs",
-  "version": "0.0.0",
-  "homepage": "",
-  "main": "src",
-  "keywords": [
-    "feathers"
-  ],
-  "author": {
-    "name": "ShilpiBundela",
-    "email": "bundela.s@husky.neu.edu"
-  },
-  "contributors": [],
-  "bugs": {},
-  "directories": {
-    "lib": "src",
-    "test": "test/"
-  },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
+  "name": "sonos_totaljs",
+  "version": "1.0.0",
+  "description": "simple file-stream application made with totaljs",
+  "main": "debug.js",
   "scripts": {
-    "test": "npm run eslint && npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
-    "start:dev": "nodemon src/",
-    "mocha": "mocha test/ --recursive"
+    "start": "node release.js",
+    "start:debug": "node debug.js",
+    "start:dev": "nodemon debug.js",
+    "test": "node test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShilpiBundela/file-stream.git"
+  },
+  "author": "ShilpiBundela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShilpiBundela/file-stream/issues"
+  },
+  "homepage": "https://github.com/ShilpiBundela/file-stream#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "compression": "^1.7.0",
-    "cors": "^2.8.4",
-    "feathers": "^2.1.7",
-    "feathers-configuration": "^0.4.1",
-    "feathers-errors": "^2.9.1",
-    "feathers-hooks": "^2.0.2",
-    "feathers-hooks-common": "^3.5.5",
-    "feathers-rest": "^1.8.0",
-    "feathers-socketio": "^2.0.0",
-    "helmet": "^3.8.0",
     "md5": "^2.2.1",
-    "serve-favicon": "^2.4.3",
-    "winston": "^2.3.1"
+    "total.js": "^2.7.0"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
-    "mocha": "^3.4.2",
-    "nodemon": "^1.11.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "nodemon": "^1.11.0"
   }
 }
