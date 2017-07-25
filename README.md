@@ -1,57 +1,65 @@
-# sonos_feathersjs
+# File Stream <i>feathersjs</i>
 
-> a simple-file stream api application with feathersjs
-
-## About
-
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
-
-## Getting Started
-
-Getting up and running is as easy as 1, 2, 3.
-
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/sonos_feathersjs; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
+### Cloning the application
+----------------------------
 ```
-$ npm install -g feathers-cli             # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
+git@github.com:ShilpiBundela/file-stream.git
 ```
 
-## Help
+### Running the application
+----------------------------
+##### Installing the application
+```
+with npm :
+--------
+npm isntall
 
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+with yarn :
+---------
+yarn install
+```
 
-## Changelog
+##### Running feathers js server
 
-__0.1.0__
+```
+without reloading :
+-----------------
+npm start
 
-- Initial release
+with reloading : (dev-server: uses nodemon)
+--------------
+npm run start:dev
 
-## License
+```
 
-Copyright (c) 2016
+##### Accessing the api
 
-Licensed under the [MIT license](LICENSE).
+```
+http://<URL_PATH>:3030/ /* (default) URL_PATH : localhost */
+```
+
+### API's
+---------
+##### <i>GET</i> : /api/stats/files/:filename
+* gets the resource information for the filename
+
+##### <i>GET</i> : /api/get/file/:filehash/:filename
+* gets the actual resource from the server
+* supports sending large sets of data over streams in chunks with ```Range``` request headers
+
+
+### CURL commands
+-----------------
+* curl commands are supplemented with jq for better json parsing
+
+
+```
+curl http://<URL_PATH>:3030/api/stats/files/<unique_file_identifier> | jq '.'
+
+---------------
+this should get the details of the file and the hash for the next command
+```
+
+```
+curl http://<URL_PATH>:3030/api/get/file/<file_hash>/<file_name> --header "Range: bytes=0-"
+```
