@@ -38,6 +38,13 @@ npm run start:dev
 http://<URL_PATH>:3030/ /* (default) URL_PATH : localhost */
 ```
 
+
+### Swagger Doc
+---------------
+#### [Swagger Api Documentation](https://github.com/ShilpiBundela/file-stream/blob/master/swagger.yaml)
+
+
+
 ### API's
 ---------
 ##### <i>GET</i> : /api/stats/files/:filename
