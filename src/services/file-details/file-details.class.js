@@ -1,7 +1,7 @@
 /**
  * FileName: file-details.class.js
- *           constructs for verbs for file-details service. Corresponds to the 
- *           /api/stats/files/:fileName (api). 
+ *           constructs for verbs for file-details service. Corresponds to the
+ *           /api/stats/files/:fileName (api).
  * version [major.minor.patch]: 0.1.0
  *
  * Dependencies:
@@ -9,7 +9,7 @@
  *      - path : nodejs path api [>6.9.5]
  *      - fs : nodejs path api [>6.9.5]
  *
- * Exports: 
+ * Exports:
  *      - Service : class Service
  *
  * Example:
@@ -22,9 +22,9 @@
 /*
  * TODO:
  * version 0.1.0:
- *      - the class allows all the http actions to work with respect to the 
+ *      - the class allows all the http actions to work with respect to the
  *        corresponding api calls. remove the calls to the api's that are not
- *        needed or return status 500 in the promise so that the calls are 
+ *        needed or return status 500 in the promise so that the calls are
  *        in-accessible
  *
  *      - flatten the promise in get(id, params) for file.stats and file.checksum
@@ -38,7 +38,7 @@ const fs = require('fs');
 
 /* eslint-disable no-unused-vars */
 class Service {
-  
+
   constructor (options) {
     this.options = options || {};
     this.SERVE_DIRECTORY_PATH = '../../../SERVE_FILES/';
@@ -52,13 +52,13 @@ class Service {
    * get(id, params):
    *    api [GET]: /api/stats/files/:{id}
    *            - corresponds to the api to get the file stats and md5 back to the end user
-   *              as a JSON Object, [GET] also returns the api call to the resource 
-   *              itself that is retrieved through the route 
-   *              /api/getfiles/:{fileName}
+   *              as a JSON Object, [GET] also returns the api call to the resource
+   *              itself that is retrieved through the route
+   *              /api/get/file/:{checksum}/:{fileName}
    *
    * @param {String} id: id at the end of the requested uri /api/stats/files/:{id}
    * @param {String} param: query parameters supplemented with the id in the uri
-   * 
+   *
    * @returns {Promise} promise: returns the server response over JSON object as a promise
    *                             - RESPONSE:
    *                                    {
@@ -70,15 +70,15 @@ class Service {
    *                                     },
    *                                     get_file_api:<api to get the file resource>
    *                                    }
-   */ 
+   */
   get (id, params) {
     let directoryPath = path.join(__dirname, this.SERVE_DIRECTORY_PATH);
     return new Promise((resolve, reject) => {
-      
+
       // get files from the serving directory
       fileDetails.getFiles(directoryPath).then((files) => {
         let isFilePresent = false;
-        for(let file of files) {
+        for (let file of files) {
           let fileName = file.substr(0, file.lastIndexOf('.'));
           if (fileName === id) {
             isFilePresent = true;
@@ -89,7 +89,7 @@ class Service {
 
               // get the file checksum for the response
               fileDetails.checksum(filePath).then((checksum) => {
-                if(checksum !== undefined) {
+                if (checksum !== undefined) {
                   resolve({
                     file: {
                       name: `${id}`,
@@ -107,7 +107,7 @@ class Service {
                 }
               });
             });
-          } 
+          }
         }
 
         // if the file identifier is not present send a not found response
