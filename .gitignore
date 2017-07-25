@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# serve_files folder 
+**/SERVE_FILES/**/*
+
+# .DS_Store
+**.DS_Store
